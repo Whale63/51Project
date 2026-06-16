@@ -1,0 +1,7 @@
+TRANSFER
+".\Objects\STARTUP.obj",
+".\Objects\buzzer_music.obj",
+".\Objects\Delay.obj",
+".\Objects\main.obj",
+".\Objects\tft_cat.obj" 
+TO ".\Objects\FakeVidio_CatDance.LIB"

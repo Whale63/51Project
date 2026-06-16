@@ -1,0 +1,12 @@
+".\Objects\STARTUP.obj",
+".\Objects\3_1.obj",
+".\Objects\3_2.obj",
+".\Objects\3_3.obj",
+".\Objects\3_4.obj",
+".\Objects\3_5.obj",
+".\Objects\3_6.obj",
+".\Objects\3_7.obj",
+".\Objects\Delay.obj",
+".\Objects\guan.obj" 
+TO ".\Objects\project3" 
+PRINT(".\Listings\project3.m51") RAMSIZE(256) 

@@ -1,0 +1,258 @@
+C51 COMPILER V9.60.7.0   3_4                                                               06/14/2026 13:07:48 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE 3_4
+OBJECT MODULE PLACED IN .\Objects\3_4.obj
+COMPILER INVOKED BY: D:\Keil uVision5\C51\BIN\C51.EXE Objects\3_4.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\
+                    -Listings\3_4.lst) TABS(2) OBJECT(.\Objects\3_4.obj)
+
+line level    source
+
+   1          //#include <reg51.h>
+   2          //#include "Delay.h"
+   3          
+   4          //// 38译码器位选：P2.2=A, P2.3=B, P2.4=C
+   5          //sbit A_138 = P2^2;
+   6          //sbit B_138 = P2^3;
+   7          //sbit C_138 = P2^4;
+   8          
+   9          //// 共阴极段码：0~9，10='-'
+  10          //unsigned char code SEG_TABLE[] =
+  11          //{
+  12          //    0x3F,  // 0
+  13          //    0x06,  // 1
+  14          //    0x5B,  // 2
+  15          //    0x4F,  // 3
+  16          //    0x66,  // 4
+  17          //    0x6D,  // 5
+  18          //    0x7D,  // 6
+  19          //    0x07,  // 7
+  20          //    0x7F,  // 8
+  21          //    0x6F,  // 9
+  22          //    0x40   // 10 = '-' 横杠
+  23          //};
+  24          
+  25          //// 时钟变量
+  26          //unsigned char second = 0;
+  27          //unsigned char minute = 0;
+  28          //unsigned char hour = 0;
+  29          
+  30          //// 显示缓冲：8位数码管（全部启用）
+  31          //unsigned char disp_buf[8];
+  32          
+  33          //// 位选函数（3-8译码器，支持8位：000~111）
+  34          //void Select_Digit(unsigned char pos)
+  35          //{
+  36          //    A_138 = pos & 0x01;         // A = bit0
+  37          //    B_138 = (pos >> 1) & 0x01;  // B = bit1
+  38          //    C_138 = (pos >> 2) & 0x01;  // C = bit2
+  39          //}
+  40          
+  41          //// 动态扫描显示（扫描8位）
+  42          //void Display_Scan(void)
+  43          //{
+  44          //    unsigned char i;
+  45          //    for(i = 0; i < 8; i++)      // 改成扫描8位
+  46          //    {
+  47          //        P0 = 0x00;                          // 消隐
+  48          //        Select_Digit(i);                    // 位选
+  49          //        P0 = SEG_TABLE[disp_buf[i]];        // 段码
+  50          //        DelayMS(1);                         // 延时1ms
+  51          //    }
+  52          //    P0 = 0x00;                              // 最后消隐
+  53          //}
+  54          
+C51 COMPILER V9.60.7.0   3_4                                                               06/14/2026 13:07:48 PAGE 2   
+
+  55          //// 更新显示缓冲：格式为 MM----SS
+  56          //void Update_Buffer(void)
+  57          //{
+  58          //    disp_buf[0] = minute / 10;      // 分钟十位（最高位）
+  59          //    disp_buf[1] = minute % 10;      // 分钟个位
+  60          //    disp_buf[2] = 10;               // 横杠 '-'
+  61          //    disp_buf[3] = 10;               // 横杠 '-'
+  62          //    disp_buf[4] = 10;               // 横杠 '-'
+  63          //    disp_buf[5] = 10;               // 横杠 '-'
+  64          //    disp_buf[6] = second / 10;      // 秒十位
+  65          //    disp_buf[7] = second % 10;      // 秒个位（最低位）
+  66          //}
+  67          
+  68          //// 定时器0中断：50ms
+  69          //unsigned char cnt0 = 0;
+  70          
+  71          //void T0_ISR(void) interrupt 1
+  72          //{
+  73          //    TH0 = 0x3C;
+  74          //    TL0 = 0xB0;
+  75          //    
+  76          //    cnt0++;
+  77          //    if(cnt0 >= 20)          // 1秒到
+  78          //    {
+  79          //        cnt0 = 0;
+  80          //        second++;
+  81          //        
+  82          //        if(second >= 60)
+  83          //        {
+  84          //            second = 0;
+  85          //            minute++;
+  86          //            if(minute >= 60)
+  87          //            {
+  88          //                minute = 0;
+  89          //                hour++;
+  90          //                if(hour >= 24)
+  91          //                    hour = 0;
+  92          //            }
+  93          //        }
+  94          //        Update_Buffer();
+  95          //    }
+  96          //}
+  97          
+  98          //void main(void)
+  99          //{
+ 100          //    Update_Buffer();
+ 101          //    
+ 102          //    TMOD = 0x01;
+ 103          //    TH0 = 0x3C;
+ 104          //    TL0 = 0xB0;
+ 105          //    
+ 106          //    ET0 = 1;
+ 107          //    TR0 = 1;
+ 108          //    EA = 1;
+ 109          //    
+ 110          //    while(1)
+ 111          //    {
+ 112          //        Display_Scan();
+ 113          //    }
+ 114          //}
+ 115          
+ 116          ////#include <reg51.h>
+C51 COMPILER V9.60.7.0   3_4                                                               06/14/2026 13:07:48 PAGE 3   
+
+ 117          ////#include "Delay.h"
+ 118          
+ 119          ////// 38译码器位选：P2.2=A, P2.3=B, P2.4=C
+ 120          ////sbit A_138 = P2^2;
+ 121          ////sbit B_138 = P2^3;
+ 122          ////sbit C_138 = P2^4;
+ 123          
+ 124          ////// 共阴极段码：0~9
+ 125          ////unsigned char code SEG_TABLE[] =
+ 126          ////{
+ 127          ////    0x3F,  // 0
+ 128          ////    0x06,  // 1
+ 129          ////    0x5B,  // 2
+ 130          ////    0x4F,  // 3
+ 131          ////    0x66,  // 4
+ 132          ////    0x6D,  // 5
+ 133          ////    0x7D,  // 6
+ 134          ////    0x07,  // 7
+ 135          ////    0x7F,  // 8
+ 136          ////    0x6F,  // 9
+ 137          ////    0x40   // -
+ 138          ////  
+ 139          ////};
+ 140          
+ 141          ////// 时钟变量
+ 142          ////unsigned char second = 0;
+ 143          ////unsigned char minute = 0;
+ 144          ////unsigned char hour = 0;
+ 145          
+ 146          ////// 显示缓冲：6位数码管
+ 147          ////unsigned char disp_buf[6];
+ 148          
+ 149          ////// 位选函数
+ 150          ////void Select_Digit(unsigned char pos)
+ 151          ////{
+ 152          ////    A_138 = pos & 0x01;
+ 153          ////    B_138 = (pos >> 1) & 0x01;
+ 154          ////    C_138 = (pos >> 2) & 0x01;
+ 155          ////}
+ 156          
+ 157          ////// 动态扫描显示
+ 158          ////void Display_Scan(void)
+ 159          ////{
+ 160          ////    unsigned char i;
+ 161          ////    for(i = 0; i < 6; i++)
+ 162          ////    {
+ 163          ////        P0 = 0x00;                          // 消隐
+ 164          ////        Select_Digit(i);                    // 位选
+ 165          ////        P0 = SEG_TABLE[disp_buf[i]];        // 段码（共阴极直接输出）
+ 166          ////        DelayMS(1);                         // 延时1ms
+ 167          ////    }
+ 168          ////    P0 = 0x00;                              // 最后消隐
+ 169          ////}
+ 170          
+ 171          ////// 更新显示缓冲
+ 172          ////void Update_Buffer(void)
+ 173          ////{
+ 174          ////    disp_buf[0] = hour / 10;        // 时十位
+ 175          ////    disp_buf[1] = hour % 10;        // 时个位
+ 176          ////    disp_buf[2] = minute / 10;      // 分十位
+ 177          ////    disp_buf[3] = minute % 10;      // 分个位
+ 178          ////    disp_buf[4] = second / 10;      // 秒十位
+C51 COMPILER V9.60.7.0   3_4                                                               06/14/2026 13:07:48 PAGE 4   
+
+ 179          ////    disp_buf[5] = second % 10;      // 秒个位
+ 180          ////}
+ 181          
+ 182          ////// 定时器0中断：50ms
+ 183          ////unsigned char cnt0 = 0;
+ 184          
+ 185          ////void T0_ISR(void) interrupt 1
+ 186          ////{
+ 187          ////    TH0 = 0x3C;
+ 188          ////    TL0 = 0xB0;
+ 189          ////    
+ 190          ////    cnt0++;
+ 191          ////    if(cnt0 >= 20)          // 1秒到
+ 192          ////    {
+ 193          ////        cnt0 = 0;
+ 194          ////        second++;
+ 195          ////        
+ 196          ////        if(second >= 60)
+ 197          ////        {
+ 198          ////            second = 0;
+ 199          ////            minute++;
+ 200          ////            if(minute >= 60)
+ 201          ////            {
+ 202          ////                minute = 0;
+ 203          ////                hour++;
+ 204          ////                if(hour >= 24)
+ 205          ////                    hour = 0;
+ 206          ////            }
+ 207          ////        }
+ 208          ////        Update_Buffer();
+ 209          ////    }
+ 210          ////}
+ 211          
+ 212          ////void main(void)
+ 213          ////{
+ 214          ////    Update_Buffer();
+ 215          ////    
+ 216          ////    TMOD = 0x01;
+ 217          ////    TH0 = 0x3C;
+ 218          ////    TL0 = 0xB0;
+ 219          ////    
+ 220          ////    ET0 = 1;
+ 221          ////    TR0 = 1;
+ 222          ////    EA = 1;
+ 223          ////    
+ 224          ////    while(1)
+ 225          ////    {
+ 226          ////        Display_Scan();
+ 227          ////    }
+ 228          ////}
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

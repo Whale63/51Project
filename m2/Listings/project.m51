@@ -1,0 +1,232 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/23/2023  15:20:11  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\C51\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\main.obj TO .\Objects\project PRINT (.\Listings\project.m51) RA
+>> MSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\main.obj (MAIN)
+  D:\C51\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\project (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000AH     UNIT         ?DT?MAIN
+            IDATA   0012H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     00BEH     UNIT         ?PR?MAIN?MAIN
+            CODE    00C1H     008CH     UNIT         ?C_C51STARTUP
+            CODE    014DH     0067H     UNIT         ?PR?_NIXIE?MAIN
+            CODE    01B4H     0032H     UNIT         ?PR?_DELAY1MS?MAIN
+            CODE    01E6H     000DH     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\project (?C_STARTUP)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN
+  +--> ?PR?_NIXIE?MAIN
+  +--> ?PR?_DELAY1MS?MAIN
+
+?PR?_DELAY1MS?MAIN
+  +--> ?PR?_NIXIE?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\project (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/23/2023  15:20:11  PAGE 2
+
+
+
+  -------         MODULE        ?C_STARTUP
+  C:00C1H         SEGMENT       ?C_C51STARTUP
+  I:0012H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:00C4H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:00C1H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:00C1H         LINE#         133
+  C:00C3H         LINE#         134
+  C:00C4H         LINE#         135
+  C:00C5H         LINE#         136
+  C:00C7H         LINE#         185
+  C:00CAH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0151H         PUBLIC        _Nixie
+  D:0080H         PUBLIC        P0
+  C:01CFH         PUBLIC        _Delay1ms
+  B:00A0H.2       PUBLIC        P2_2
+  B:00A0H.3       PUBLIC        P2_3
+  B:00A0H.4       PUBLIC        P2_4
+  C:0003H         PUBLIC        main
+  D:0008H         PUBLIC        NixieTable
+  C:01B4H         SYMBOL        L?0031
+  C:01C4H         SYMBOL        L?0032
+  C:01C8H         SYMBOL        L?0033
+  -------         PROC          L?0030
+  -------         ENDPROC       L?0030
+  C:01B4H         SYMBOL        L?0031
+  C:01C4H         SYMBOL        L?0032
+  C:01C8H         SYMBOL        L?0033
+  -------         PROC          _DELAY1MS
+  D:0006H         SYMBOL        xms
+  -------         DO            
+  D:0005H         SYMBOL        i
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/23/2023  15:20:11  PAGE 3
+
+
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:01CFH         LINE#         3
+  C:01CFH         LINE#         4
+  C:01CFH         LINE#         6
+  C:01D3H         LINE#         7
+  C:01D3H         LINE#         8
+  C:01D4H         LINE#         9
+  C:01D5H         LINE#         10
+  C:01D6H         LINE#         11
+  C:01D8H         LINE#         12
+  C:01DAH         LINE#         14
+  C:01DAH         LINE#         15
+  C:01DCH         LINE#         16
+  C:01DEH         LINE#         17
+  C:01E3H         LINE#         18
+  C:01E5H         LINE#         20
+  -------         ENDPROC       _DELAY1MS
+  C:014DH         SYMBOL        L?0035
+  -------         PROC          L?0034
+  -------         ENDPROC       L?0034
+  C:014DH         SYMBOL        L?0035
+  -------         PROC          _NIXIE
+  D:0007H         SYMBOL        Location
+  D:0004H         SYMBOL        Number
+  C:0151H         LINE#         23
+  C:0151H         LINE#         24
+  C:0151H         LINE#         25
+  C:017EH         LINE#         26
+  C:017EH         LINE#         27
+  C:0182H         LINE#         28
+  C:0186H         LINE#         29
+  C:018AH         LINE#         30
+  C:018EH         LINE#         31
+  C:0196H         LINE#         32
+  C:019EH         LINE#         33
+  C:01A6H         LINE#         34
+  C:01ACH         LINE#         35
+  C:01ACH         LINE#         37
+  C:01B3H         LINE#         39
+  -------         ENDPROC       _NIXIE
+  -------         PROC          MAIN
+  -------         DO            
+  D:0002H         SYMBOL        i
+  -------         ENDDO         
+  C:0003H         LINE#         41
+  C:0003H         LINE#         42
+  C:0003H         LINE#         46
+  C:0007H         LINE#         47
+  C:0011H         LINE#         48
+  C:0011H         LINE#         49
+  C:001AH         LINE#         51
+  C:0020H         LINE#         53
+  C:0022H         LINE#         54
+  C:0029H         LINE#         56
+  C:002FH         LINE#         57
+  C:0032H         LINE#         58
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/23/2023  15:20:11  PAGE 4
+
+
+  C:0037H         LINE#         59
+  C:003EH         LINE#         60
+  C:0044H         LINE#         61
+  C:0047H         LINE#         62
+  C:004CH         LINE#         63
+  C:0053H         LINE#         64
+  C:0059H         LINE#         65
+  C:005CH         LINE#         66
+  C:0061H         LINE#         67
+  C:0068H         LINE#         68
+  C:006EH         LINE#         69
+  C:0071H         LINE#         70
+  C:0073H         LINE#         71
+  C:0073H         LINE#         72
+  C:0073H         LINE#         73
+  C:0076H         LINE#         74
+  C:007BH         LINE#         75
+  C:007EH         LINE#         76
+  C:0080H         LINE#         77
+  C:0080H         LINE#         78
+  C:0080H         LINE#         79
+  C:0083H         LINE#         80
+  C:0085H         LINE#         81
+  C:0088H         LINE#         82
+  C:008AH         LINE#         83
+  C:008AH         LINE#         84
+  C:008AH         LINE#         85
+  C:008DH         LINE#         86
+  C:0093H         LINE#         87
+  C:0096H         LINE#         88
+  C:0098H         LINE#         89
+  C:0098H         LINE#         90
+  C:0098H         LINE#         91
+  C:009BH         LINE#         92
+  C:00A1H         LINE#         93
+  C:00A4H         LINE#         94
+  C:00A6H         LINE#         95
+  C:00A6H         LINE#         96
+  C:00A6H         LINE#         97
+  C:00A9H         LINE#         98
+  C:00AFH         LINE#         99
+  C:00B2H         LINE#         100
+  C:00BAH         LINE#         101
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+Program Size: data=19.0 xdata=0 code=499
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,320 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    06/07/2026  16:10:22  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+D:\KEIL UVISION5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\buzzer_music.obj, .\Objects\Delay.obj, .\Objects\main
+>> .obj, .\Objects\tft_cat.obj TO .\Objects\FakeVidio_CatDance PRINT (.\Listings\FakeVidio_CatDance.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\buzzer_music.obj (BUZZER_MUSIC)
+  .\Objects\Delay.obj (DELAY)
+  .\Objects\main.obj (MAIN)
+  .\Objects\tft_cat.obj (TFT_CAT)
+  D:\KEIL UVISION5\C51\LIB\C51S.LIB (?C_INIT)
+  D:\KEIL UVISION5\C51\LIB\C51S.LIB (?C?IMUL)
+  D:\KEIL UVISION5\C51\LIB\C51S.LIB (?C?SLDIV)
+  D:\KEIL UVISION5\C51\LIB\C51S.LIB (?C?ULDIV)
+
+
+LINK MAP OF MODULE:  .\Objects\FakeVidio_CatDance (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         ?DT?BUZZER_MUSIC
+            DATA    000BH     0002H     UNIT         ?DT?_DELAY_BEAT?BUZZER_MUSIC
+            DATA    000DH     0001H     UNIT         ?DT?PLAY_MUSIC?BUZZER_MUSIC
+            IDATA   000EH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     07F2H                  *** GAP ***
+            CODE    0800H     00E0H     UNIT         ?C?LIB_CODE
+            CODE    08E0H     008CH     UNIT         ?C_C51STARTUP
+            CODE    096CH     0051H     UNIT         ?CO?BUZZER_MUSIC
+            CODE    09BDH     0048H     UNIT         ?PR?PLAY_MUSIC?BUZZER_MUSIC
+            CODE    0A05H     0044H     UNIT         ?C?LDIV
+            CODE    0A49H     002DH     UNIT         ?PR?_SET_NOTE?BUZZER_MUSIC
+            CODE    0A76H     0028H     UNIT         ?PR?MAIN?MAIN
+            CODE    0A9EH     0024H     UNIT         ?PR?_DELAY_BEAT?BUZZER_MUSIC
+            CODE    0AC2H     0015H     UNIT         ?PR?_DELAYMS?DELAY
+            CODE    0AD7H     0013H     UNIT         ?PR?T0_ISR?BUZZER_MUSIC
+            CODE    0AEAH     0012H     UNIT         ?PR?BUZZER_INIT?BUZZER_MUSIC
+            CODE    0AFCH     000AH     UNIT         ?PR?BUZZER_LOOP?BUZZER_MUSIC
+            CODE    0B06H     0008H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\FakeVidio_CatDance (?C_STARTUP)
+
+
+SEGMENT
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/07/2026  16:10:22  PAGE 2
+
+
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN
+  +--> ?PR?_DELAYMS?DELAY
+  +--> ?PR?BUZZER_INIT?BUZZER_MUSIC
+
+
+
+UNRESOLVED EXTERNAL SYMBOLS:
+   CAT_DANCE_ANIMATE
+   TFT_CAT_INIT
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\FakeVidio_CatDance (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:08E0H         SEGMENT       ?C_C51STARTUP
+  I:000EH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:08E3H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:08E0H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:08E0H         LINE#         133
+  C:08E2H         LINE#         134
+  C:08E3H         LINE#         135
+  C:08E4H         LINE#         136
+  C:08E6H         LINE#         185
+  C:08E9H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/07/2026  16:10:22  PAGE 3
+
+
+  -------         MODULE        BUZZER_MUSIC
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0008H         PUBLIC        timer_reload
+  D:00A0H         PUBLIC        P2
+  C:0AFCH         PUBLIC        Buzzer_Loop
+  B:00A8H.7       PUBLIC        EA
+  C:0A49H         PUBLIC        _Set_Note
+  D:0089H         PUBLIC        TMOD
+  B:00A8H.1       PUBLIC        ET0
+  D:008CH         PUBLIC        TH0
+  C:0A9EH         PUBLIC        _Delay_Beat
+  D:008AH         PUBLIC        TL0
+  C:0AD7H         PUBLIC        T0_ISR
+  B:0088H.4       PUBLIC        TR0
+  B:00A0H.0       PUBLIC        BUZZER
+  C:096CH         PUBLIC        music_lancao
+  D:000AH         PUBLIC        sound_enable
+  C:0AEAH         PUBLIC        Buzzer_Init
+  C:09BDH         PUBLIC        Play_Music
+  -------         PROC          T0_ISR
+  C:0AD7H         LINE#         76
+  C:0AD9H         LINE#         78
+  C:0ADDH         LINE#         79
+  C:0ADDH         LINE#         80
+  C:0AE1H         LINE#         81
+  C:0AE5H         LINE#         82
+  C:0AE7H         LINE#         83
+  C:0AE7H         LINE#         84
+  -------         ENDPROC       T0_ISR
+  -------         PROC          _SET_NOTE
+  D:0006H         SYMBOL        freq
+  -------         DO            
+  D:0006H         SYMBOL        count
+  -------         ENDDO         
+  C:0A49H         LINE#         90
+  C:0A49H         LINE#         91
+  C:0A49H         LINE#         94
+  C:0A4DH         LINE#         95
+  C:0A4DH         LINE#         96
+  C:0A4FH         LINE#         97
+  C:0A52H         LINE#         99
+  C:0A52H         LINE#         102
+  C:0A63H         LINE#         103
+  C:0A6CH         LINE#         105
+  C:0A6EH         LINE#         106
+  C:0A72H         LINE#         107
+  C:0A75H         LINE#         108
+  -------         ENDPROC       _SET_NOTE
+  -------         PROC          _DELAY_BEAT
+  D:0007H         SYMBOL        beat
+  -------         DO            
+  D:000BH         SYMBOL        ms
+  -------         ENDDO         
+  C:0A9EH         LINE#         111
+  C:0A9EH         LINE#         112
+  C:0A9EH         LINE#         113
+  C:0AABH         LINE#         114
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/07/2026  16:10:22  PAGE 4
+
+
+  C:0AB8H         LINE#         115
+  C:0AB8H         LINE#         116
+  C:0ABFH         LINE#         117
+  C:0AC1H         LINE#         118
+  -------         ENDPROC       _DELAY_BEAT
+  -------         PROC          PLAY_MUSIC
+  -------         DO            
+  D:000DH         SYMBOL        i
+  -------         ENDDO         
+  C:09BDH         LINE#         123
+  C:09BDH         LINE#         124
+  C:09BDH         LINE#         126
+  C:09C0H         LINE#         127
+  C:09C0H         LINE#         128
+  C:09D9H         LINE#         129
+  C:09EEH         LINE#         131
+  C:09F4H         LINE#         132
+  C:09FBH         LINE#         133
+  C:0A04H         LINE#         134
+  -------         ENDPROC       PLAY_MUSIC
+  -------         PROC          BUZZER_LOOP
+  C:0AFCH         LINE#         137
+  C:0AFCH         LINE#         138
+  C:0AFCH         LINE#         139
+  C:0AFFH         LINE#         140
+  -------         ENDPROC       BUZZER_LOOP
+  -------         PROC          BUZZER_INIT
+  C:0AEAH         LINE#         145
+  C:0AEAH         LINE#         146
+  C:0AEAH         LINE#         147
+  C:0AECH         LINE#         149
+  C:0AEFH         LINE#         150
+  C:0AF2H         LINE#         151
+  C:0AF5H         LINE#         152
+  C:0AF7H         LINE#         153
+  C:0AF9H         LINE#         154
+  C:0AFBH         LINE#         155
+  -------         ENDPROC       BUZZER_INIT
+  -------         ENDMOD        BUZZER_MUSIC
+
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0AC2H         PUBLIC        _DelayMS
+  -------         PROC          _DELAYMS
+  D:0006H         SYMBOL        xms
+  -------         DO            
+  D:0005H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:0AC2H         LINE#         3
+  C:0AC2H         LINE#         4
+  C:0AC2H         LINE#         6
+  C:0ACCH         LINE#         7
+  C:0ACCH         LINE#         8
+  C:0ACEH         LINE#         9
+  C:0AD0H         LINE#         11
+  C:0AD0H         LINE#         12
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/07/2026  16:10:22  PAGE 5
+
+
+  C:0AD2H         LINE#         13
+  C:0AD4H         LINE#         14
+  C:0AD6H         LINE#         15
+  -------         ENDPROC       _DELAYMS
+  -------         ENDMOD        DELAY
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  C:0A76H         PUBLIC        main
+  -------         PROC          MAIN
+  C:0A76H         LINE#         19
+  C:0A76H         LINE#         20
+  C:0A76H         LINE#         21
+  C:0A79H         LINE#         22
+  C:0A7FH         LINE#         23
+  C:0A82H         LINE#         24
+  C:0A89H         LINE#         25
+  C:0A8CH         LINE#         26
+  C:0A8FH         LINE#         28
+  C:0A8FH         LINE#         29
+  C:0A8FH         LINE#         30
+  C:0A92H         LINE#         31
+  C:0A99H         LINE#         32
+  C:0A9CH         LINE#         33
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        TFT_CAT
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  -------         ENDMOD        TFT_CAT
+
+  -------         MODULE        ?C?IMUL
+  C:0800H         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+  -------         MODULE        ?C?SLDIV
+  C:0A05H         PUBLIC        ?C?SLDIV
+  -------         ENDMOD        ?C?SLDIV
+
+  -------         MODULE        ?C?ULDIV
+  C:084EH         PUBLIC        ?C?ULDIV
+  -------         ENDMOD        ?C?ULDIV
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?BUZZER_LOOP?BUZZER_MUSIC
+
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  TFT_CAT_INIT
+    MODULE:  .\Objects\main.obj (MAIN)
+
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CAT_DANCE_ANIMATE
+    MODULE:  .\Objects\main.obj (MAIN)
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/07/2026  16:10:22  PAGE 6
+
+
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  TFT_CAT_INIT
+    MODULE:  .\Objects\main.obj (MAIN)
+    ADDRESS: 0A8AH
+
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CAT_DANCE_ANIMATE
+    MODULE:  .\Objects\main.obj (MAIN)
+    ADDRESS: 0A9AH
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 016FH BYTE (17%) *
+******************************************************************************
+
+Program Size: data=15.0 xdata=0 code=788
+LINK/LOCATE RUN COMPLETE.  5 WARNING(S),  0 ERROR(S)

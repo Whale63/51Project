@@ -1,0 +1,353 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    06/07/2026  08:29:59  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+D:\KEIL UVISION5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\main.obj TO .\Objects\PermanentCalendar PRINT (.\List
+>> ings\PermanentCalendar.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\main.obj (MAIN)
+  D:\KEIL UVISION5\C51\LIB\C51S.LIB (?C_INIT)
+  D:\KEIL UVISION5\C51\LIB\C51S.LIB (?C?COPY)
+  D:\KEIL UVISION5\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  .\Objects\PermanentCalendar (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0010H     UNIT         _DATA_GROUP_
+                    0018H     0008H                  *** GAP ***
+            BIT     0020H.0   0000H.1   UNIT         ?BI?MAIN
+                    0020H.1   0000H.7                *** GAP ***
+            DATA    0021H     000FH     UNIT         ?DT?MAIN
+            IDATA   0030H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     07F2H                  *** GAP ***
+            CODE    0800H     014BH     UNIT         ?C?LIB_CODE
+            CODE    094BH     00A1H     UNIT         ?PR?T0_ISR?MAIN
+            CODE    09ECH     008CH     UNIT         ?C_C51STARTUP
+            CODE    0A78H     006DH     UNIT         ?PR?_NIXIE?MAIN
+            CODE    0AE5H     0045H     UNIT         ?PR?UPDATE_BUFFER_YMD?MAIN
+            CODE    0B2AH     0045H     UNIT         ?PR?UPDATE_BUFFER_HMS?MAIN
+            CODE    0B6FH     0039H     UNIT         ?PR?MAIN?MAIN
+            CODE    0BA8H     0030H     UNIT         ?PR?_ISLEAPYEAR?MAIN
+            CODE    0BD8H     002FH     UNIT         ?PR?_GETDAYSINMONTH?MAIN
+            CODE    0C07H     0018H     UNIT         ?C_INITSEG
+            CODE    0C1FH     0017H     UNIT         ?CO?MAIN
+            CODE    0C36H     0015H     UNIT         ?PR?_DELAY?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\PermanentCalendar (?C_STARTUP)
+
+
+SEGMENT                              DATA_GROUP 
+  +--> CALLED SEGMENT              START    LENGTH
+--------------------------------------------------
+?C_C51STARTUP                      -----    -----
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/07/2026  08:29:59  PAGE 2
+
+
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                      0008H    0001H
+  +--> ?PR?UPDATE_BUFFER_YMD?MAIN
+  +--> ?PR?UPDATE_BUFFER_HMS?MAIN
+  +--> ?PR?_NIXIE?MAIN
+
+?PR?_NIXIE?MAIN                    -----    -----
+  +--> ?CO?MAIN
+  +--> ?PR?_DELAY?MAIN
+
+*** NEW ROOT ***************************************************
+
+?PR?T0_ISR?MAIN                    -----    -----
+  +--> ?PR?_GETDAYSINMONTH?MAIN
+
+?PR?_GETDAYSINMONTH?MAIN           0009H    000FH
+  +--> ?CO?MAIN
+  +--> ?PR?_ISLEAPYEAR?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\PermanentCalendar (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:09ECH         SEGMENT       ?C_C51STARTUP
+  I:0030H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:09EFH         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:09ECH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:09ECH         LINE#         133
+  C:09EEH         LINE#         134
+  C:09EFH         LINE#         135
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/07/2026  08:29:59  PAGE 3
+
+
+  C:09F0H         LINE#         136
+  C:09F2H         LINE#         185
+  C:09F5H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0A78H         PUBLIC        _Nixie
+  D:0021H         PUBLIC        second
+  D:0080H         PUBLIC        P0
+  B:00A8H.7       PUBLIC        EA
+  B:00A0H.2       PUBLIC        P2_2
+  B:00A0H.3       PUBLIC        P2_3
+  D:0022H         PUBLIC        minute
+  B:00A0H.4       PUBLIC        P2_4
+  C:0B6FH         PUBLIC        main
+  D:0023H         PUBLIC        month
+  D:0024H         PUBLIC        year
+  D:0089H         PUBLIC        TMOD
+  D:0025H         PUBLIC        day
+  D:0026H         PUBLIC        hour
+  C:0C29H         SYMBOL        _?ix1000
+  B:00A8H.1       PUBLIC        ET0
+  B:0020H.0       PUBLIC        show_mode
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  D:0027H         PUBLIC        disp_buf
+  C:094BH         PUBLIC        T0_ISR
+  C:0BA8H         PUBLIC        _IsLeapYear
+  B:0088H.4       PUBLIC        TR0
+  C:0C1FH         PUBLIC        NixieTable
+  C:0B2AH         PUBLIC        Update_Buffer_HMS
+  C:0AE5H         PUBLIC        Update_Buffer_YMD
+  C:0C36H         PUBLIC        _Delay
+  D:002FH         PUBLIC        cnt0
+  C:0BD8H         PUBLIC        _GetDaysInMonth
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        xms
+  -------         DO            
+  D:0005H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:0C36H         LINE#         31
+  C:0C36H         LINE#         32
+  C:0C36H         LINE#         34
+  C:0C40H         LINE#         35
+  C:0C40H         LINE#         36
+  C:0C42H         LINE#         37
+  C:0C44H         LINE#         39
+  C:0C44H         LINE#         40
+  C:0C46H         LINE#         41
+  C:0C48H         LINE#         42
+  C:0C4AH         LINE#         43
+  -------         ENDPROC       _DELAY
+  -------         PROC          _ISLEAPYEAR
+  D:0007H         SYMBOL        y
+  -------         DO            
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/07/2026  08:29:59  PAGE 4
+
+
+  D:0002H         SYMBOL        full_year
+  -------         ENDDO         
+  C:0BA8H         LINE#         46
+  C:0BA8H         LINE#         47
+  C:0BA8H         LINE#         48
+  C:0BB2H         LINE#         49
+  C:0BD2H         LINE#         50
+  C:0BD2H         LINE#         51
+  C:0BD5H         LINE#         52
+  C:0BD5H         LINE#         53
+  C:0BD7H         LINE#         54
+  -------         ENDPROC       _ISLEAPYEAR
+  -------         PROC          _GETDAYSINMONTH
+  D:0009H         SYMBOL        m
+  D:000AH         SYMBOL        y
+  -------         DO            
+  D:000BH         SYMBOL        days
+  -------         ENDDO         
+  C:0BD8H         LINE#         57
+  C:0BDCH         LINE#         58
+  C:0BDCH         LINE#         59
+  C:0BEFH         LINE#         60
+  C:0BFCH         LINE#         61
+  C:0BFCH         LINE#         62
+  C:0BFFH         LINE#         63
+  C:0BFFH         LINE#         64
+  C:0C06H         LINE#         65
+  -------         ENDPROC       _GETDAYSINMONTH
+  -------         PROC          _NIXIE
+  D:0007H         SYMBOL        Location
+  D:0005H         SYMBOL        Number
+  C:0A78H         LINE#         68
+  C:0A78H         LINE#         69
+  C:0A78H         LINE#         70
+  C:0AA5H         LINE#         71
+  C:0AA5H         LINE#         72
+  C:0AA9H         LINE#         73
+  C:0AADH         LINE#         74
+  C:0AB1H         LINE#         75
+  C:0AB5H         LINE#         76
+  C:0ABDH         LINE#         77
+  C:0AC5H         LINE#         78
+  C:0ACDH         LINE#         79
+  C:0AD3H         LINE#         80
+  C:0AD3H         LINE#         81
+  C:0ADAH         LINE#         82
+  C:0AE1H         LINE#         83
+  C:0AE4H         LINE#         84
+  -------         ENDPROC       _NIXIE
+  -------         PROC          UPDATE_BUFFER_YMD
+  C:0AE5H         LINE#         87
+  C:0AE5H         LINE#         88
+  C:0AE5H         LINE#         89
+  C:0AEDH         LINE#         90
+  C:0AF6H         LINE#         91
+  C:0AFEH         LINE#         92
+  C:0B07H         LINE#         93
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/07/2026  08:29:59  PAGE 5
+
+
+  C:0B0FH         LINE#         94
+  C:0B18H         LINE#         96
+  C:0B20H         LINE#         97
+  C:0B29H         LINE#         98
+  -------         ENDPROC       UPDATE_BUFFER_YMD
+  -------         PROC          UPDATE_BUFFER_HMS
+  C:0B2AH         LINE#         101
+  C:0B2AH         LINE#         102
+  C:0B2AH         LINE#         103
+  C:0B32H         LINE#         104
+  C:0B3BH         LINE#         105
+  C:0B43H         LINE#         106
+  C:0B4CH         LINE#         107
+  C:0B54H         LINE#         108
+  C:0B5DH         LINE#         110
+  C:0B65H         LINE#         111
+  C:0B6EH         LINE#         112
+  -------         ENDPROC       UPDATE_BUFFER_HMS
+  -------         PROC          T0_ISR
+  C:094BH         LINE#         118
+  C:0968H         LINE#         120
+  C:096BH         LINE#         121
+  C:096EH         LINE#         123
+  C:0970H         LINE#         124
+  C:0977H         LINE#         125
+  C:0977H         LINE#         126
+  C:097AH         LINE#         127
+  C:097CH         LINE#         129
+  C:0982H         LINE#         130
+  C:0982H         LINE#         131
+  C:0985H         LINE#         132
+  C:0987H         LINE#         134
+  C:098DH         LINE#         135
+  C:098DH         LINE#         136
+  C:0990H         LINE#         137
+  C:0992H         LINE#         139
+  C:0998H         LINE#         140
+  C:0998H         LINE#         141
+  C:099BH         LINE#         142
+  C:099DH         LINE#         144
+  C:09AAH         LINE#         145
+  C:09AAH         LINE#         146
+  C:09ADH         LINE#         147
+  C:09AFH         LINE#         149
+  C:09B6H         LINE#         150
+  C:09B6H         LINE#         151
+  C:09B9H         LINE#         152
+  C:09BBH         LINE#         154
+  C:09C2H         LINE#         155
+  C:09C2H         LINE#         156
+  C:09C5H         LINE#         157
+  C:09C5H         LINE#         158
+  C:09C5H         LINE#         159
+  C:09C5H         LINE#         160
+  C:09C5H         LINE#         161
+  C:09C5H         LINE#         162
+  C:09C5H         LINE#         165
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/07/2026  08:29:59  PAGE 6
+
+
+  C:09CFH         LINE#         166
+  C:09CFH         LINE#         167
+  C:09D1H         LINE#         168
+  C:09D1H         LINE#         169
+  C:09D1H         LINE#         170
+  -------         ENDPROC       T0_ISR
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        i
+  -------         ENDDO         
+  C:0B6FH         LINE#         172
+  C:0B6FH         LINE#         173
+  C:0B6FH         LINE#         175
+  C:0B72H         LINE#         178
+  C:0B75H         LINE#         179
+  C:0B78H         LINE#         180
+  C:0B7BH         LINE#         181
+  C:0B7DH         LINE#         182
+  C:0B7FH         LINE#         183
+  C:0B81H         LINE#         185
+  C:0B81H         LINE#         186
+  C:0B81H         LINE#         190
+  C:0B84H         LINE#         191
+  C:0B84H         LINE#         192
+  C:0B87H         LINE#         193
+  C:0B89H         LINE#         195
+  C:0B89H         LINE#         196
+  C:0B8CH         LINE#         197
+  C:0B8CH         LINE#         200
+  C:0B96H         LINE#         201
+  C:0B96H         LINE#         202
+  C:0BA4H         LINE#         203
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        ?C?COPY
+  C:08D0H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+  -------         MODULE        ?C?UIDIV
+  C:08F6H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0285H BYTE (31%) *
+******************************************************************************
+
+Program Size: data=40.1 xdata=0 code=1105
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
